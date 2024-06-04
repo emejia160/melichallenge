@@ -43,6 +43,9 @@
                             <constraint firstItem="l4L-WC-Kfe" firstAttribute="centerX" secondItem="b7x-Eq-Vo4" secondAttribute="centerX" id="nzD-5d-wsq"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchText" destination="b7x-Eq-Vo4" id="gd2-Nu-oOc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

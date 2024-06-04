@@ -25,7 +25,10 @@ class ProductsAdapter:  NSObject, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ProductCell
-        cell.item = list?[indexPath.row]
+        if let product = list?[indexPath.row] {
+            cell.configure(with: product)
+        }
+       
         return cell
     }
     

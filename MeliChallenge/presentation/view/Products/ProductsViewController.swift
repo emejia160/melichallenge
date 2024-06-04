@@ -10,6 +10,7 @@ import UIKit
 class ProductsViewController: UIViewController {
     let adapter = ProductsAdapter()
     var safeArea: UILayoutGuide!
+    var textToSearch: String = ""
     
     let presenter = ProductsPresenter(productService: ProductsService())
     
@@ -51,7 +52,7 @@ class ProductsViewController: UIViewController {
         ])
         
         // load data
-        presenter.getProducts()
+        presenter.getProducts(textToSearch: self.textToSearch)
     }
 }
 
@@ -59,7 +60,7 @@ extension ProductsViewController: ProductsAdapterDelegate {
     func didTap(_ item: Product) {
         guard let name = item.title else { return }
         let vc = ProductDetailViewController()
-        vc.modalPresentationStyle = .fullScreen
+        vc.product = item
         self.present(vc, animated: true, completion: nil)
     }
 }

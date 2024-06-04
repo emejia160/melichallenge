@@ -65,5 +65,16 @@ class APICallManager {
             }
         }
     }
+    
+    func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let data = data, error == nil {
+                let image = UIImage(data: data)
+                completion(image)
+            } else {
+                completion(nil)
+            }
+        }.resume()
+    }
 }
 

@@ -32,10 +32,10 @@ class ProductsPresenter {
         productsView = nil
     }
     
-    func getProducts() {
+    func getProducts(textToSearch: String) {
         productsView?.startLoading()
        
-        productService.getProducts(search: "Iphone 15") { response in
+        productService.getProducts(search: textToSearch) { response in
             print("Success")
             if (response.count > 0) {
                 self.productsView?.setProducts(products: response)

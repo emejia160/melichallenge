@@ -11,9 +11,11 @@ import UIKit
 
 class ProductSearchViewController: UIViewController {
     
+    @IBOutlet weak var searchText: UITextField!
     @IBAction func searchTapped(_ sender: Any) {
         
         let vc = ProductsViewController()
+        vc.textToSearch = searchText.text ?? ""
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
