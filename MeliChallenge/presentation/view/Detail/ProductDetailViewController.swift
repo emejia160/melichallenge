@@ -8,10 +8,9 @@
 import UIKit
 
 class ProductDetailViewController: UIViewController {
-    // MARK: - Properties
+    
     var product: Product?
     
-    // MARK: - UI Elements
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 18)
@@ -32,7 +31,6 @@ class ProductDetailViewController: UIViewController {
         return label
     }()
     
-    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -40,13 +38,11 @@ class ProductDetailViewController: UIViewController {
         updateUI()
     }
     
-    // MARK: - UI Setup
     private func setupUI() {
         view.addSubview(nameLabel)
         view.addSubview(imageView)
         view.addSubview(descriptionLabel)
         
-        // Set up constraints (you can adjust these as needed)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -67,7 +63,6 @@ class ProductDetailViewController: UIViewController {
         ])
     }
     
-    // MARK: - Update UI
     private func updateUI() {
         if let imageUrl = URL(string: (product?.thumbnail)!) {
             APICallManager.instance.downloadImage(from: imageUrl) { image in

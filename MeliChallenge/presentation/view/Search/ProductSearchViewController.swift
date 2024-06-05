@@ -9,15 +9,27 @@ import Foundation
 import UIKit
 
 
-class ProductSearchViewController: UIViewController {
+class ProductSearchViewController: BaseViewController {
     
     @IBOutlet weak var searchText: UITextField!
     @IBAction func searchTapped(_ sender: Any) {
         
-        let vc = ProductsViewController()
-        vc.textToSearch = searchText.text ?? ""
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+        if (searchText.text!.isEmpty) {
+            showSimpleToast(message: "Ingrese un producto a buscar.")
+            return
+        } else {
+            irABusquedaDeProductos()
+        }
+        
+    }
+    
+    private func irABusquedaDeProductos() {
+        let productsViewController = ProductsViewController()
+        
+        productsViewController.title = "Resultados de la búsqueda"
+        let navController = self.navigationController
+        productsViewController.textToSearch = searchText.text ?? ""
+        navigationController?.pushViewController(productsViewController, animated: true)
     }
     
 }

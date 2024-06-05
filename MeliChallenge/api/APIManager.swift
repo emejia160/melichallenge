@@ -9,39 +9,12 @@ import Alamofire
 import SwiftyJSON
 import Foundation
 
-let API_BASE_URL = "https://api.mercadolibre.com/sites/MCO/search?q=%@"
-
 class APICallManager {
     static let instance = APICallManager()
     
     enum RequestMethod {
         case get
         case post
-    }
-    
-    func callAPIGetPeople(search: String, onSuccess successCallback: ((_ response: [Product]) -> Void)?,
-                          onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
-        
-        let url = String(format: API_BASE_URL, search)
-        
-        self.createRequest(
-            url, method: .get, headers: nil, parameters: nil,
-            onSuccess: {(responseObject: JSON) -> Void in
-                if let responseDict = responseObject["results"].arrayObject {
-                    let productDict = responseDict as! [[String:AnyObject]]
-                    let swiftyJson = JSON(productDict).rawString()
-                    let data = Data(swiftyJson!.utf8) 
-                    
-                    let suggestion = try? JSONDecoder().decode([Product].self, from: data)
-                    successCallback?(suggestion!)
-                } else {
-                    failureCallback?("Ha ocurrido un error consultando")
-                }
-            },
-            onFailure: {(errorMessage: String) -> Void in
-                failureCallback?(errorMessage)
-            }
-        )
     }
     
     func createRequest(

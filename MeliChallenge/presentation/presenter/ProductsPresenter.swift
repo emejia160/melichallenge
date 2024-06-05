@@ -33,10 +33,11 @@ class ProductsPresenter {
     }
     
     func getProducts(textToSearch: String) {
+        
+    
         productsView?.startLoading()
        
         productService.getProducts(search: textToSearch) { response in
-            print("Success")
             if (response.count > 0) {
                 self.productsView?.setProducts(products: response)
             } else {
@@ -44,7 +45,7 @@ class ProductsPresenter {
             }
            
         } onError: { error in
-            print("Error")
+            self.productsView?.showError(error: error)
         }
 
 

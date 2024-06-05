@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductsViewController: UIViewController {
+class ProductsViewController: BaseViewController {
     let adapter = ProductsAdapter()
     var safeArea: UILayoutGuide!
     var textToSearch: String = ""
@@ -51,50 +51,46 @@ class ProductsViewController: UIViewController {
             productsListView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
         
-        // load data
         presenter.getProducts(textToSearch: self.textToSearch)
     }
 }
 
 extension ProductsViewController: ProductsAdapterDelegate {
     func didTap(_ item: Product) {
-        guard let name = item.title else { return }
-        let vc = ProductDetailViewController()
-        vc.product = item
-        self.present(vc, animated: true, completion: nil)
+        goToDetailViewController(product: item)
+    }
+    
+    private func goToDetailViewController (product: Product){
+        let detailViewController = ProductDetailViewController()
+        detailViewController.product = product
+    
+        let navController = self.navigationController
+        navController?.pushViewController(detailViewController, animated: true)
     }
 }
 
 extension ProductsViewController: ProductView {
     func setProducts(products: [Product]) {
         adapter.list = products
-        productsListView.isHidden = false
+        finishLoading()
         productsListView.reloadData()
     }
     
     func setEmptyProducts() {
         productsListView.isHidden = true
+        finishLoading()
     }
     
     func startLoading() {
-        productsListView.isHidden = true
+        showLoading()
     }
     
     func finishLoading() {
-        productsListView.isHidden = false
+        hideLoading()
     }
     
     func showError(error: String) {
-        let alert = UIAlertController(title: nil, message: error, preferredStyle: .alert)
-        alert.view.backgroundColor = .black
-        alert.view.alpha = 0.6
-        alert.view.layer.cornerRadius = 15
-        
-        self.present(alert, animated: false)
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            alert.dismiss(animated: true)
-        }
+        self.showSimpleToast(message: error)
     }
     
     
