@@ -72,6 +72,10 @@ class ProductCell: UITableViewCell {
         }
        
         nameLabel.text = product.title
-        priceLabel.text = "$\(product.price)"
+        
+        if let formattedCurrency = String.formattedCurrency(for: product.price, currencyCode: product.currencyID) {
+            priceLabel.text = formattedCurrency
+        }
+        
     }
 }

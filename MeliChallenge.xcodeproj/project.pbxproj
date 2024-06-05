@@ -205,6 +205,7 @@
 		545456E92C0A43A10064F977 /* MeliChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				5473EDE32C10A56C0021EAB1 /* extensions */,
 				5473EDD92C109C8F0021EAB1 /* utils */,
 				5473EDD62C1093BF0021EAB1 /* base */,
 				540083C72C0F8C7900D08C38 /* api */,
@@ -284,9 +285,16 @@
 			isa = PBXGroup;
 			children = (
 				5473EDDA2C109C9F0021EAB1 /* SpinnerViewController.swift */,
-				5473EDE12C10A0D40021EAB1 /* String.swift */,
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		5473EDE32C10A56C0021EAB1 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5473EDE12C10A0D40021EAB1 /* String.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 		AA285E7799E511CD4EBBCF92 /* Frameworks */ = {
