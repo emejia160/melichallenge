@@ -27,7 +27,7 @@ class ProductsService {
                     let product = try? JSONDecoder().decode([Product].self, from: data)
                     onFinish(product!)
                 } else {
-                    onError("Ha ocurrido un error consultando el contenido")
+                    onError("error_searching_products".localized())
                 }
             },
             onFailure: {(errorMessage: String) -> Void in

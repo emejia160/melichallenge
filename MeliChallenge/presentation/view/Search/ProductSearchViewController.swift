@@ -15,7 +15,7 @@ class ProductSearchViewController: BaseViewController {
     @IBAction func searchTapped(_ sender: Any) {
         
         if (searchText.text!.isEmpty) {
-            showSimpleToast(message: "Ingrese un producto a buscar.")
+            showSimpleToast(message: "error_empty_search".localized())
             return
         } else {
             irABusquedaDeProductos()
@@ -26,10 +26,10 @@ class ProductSearchViewController: BaseViewController {
     private func irABusquedaDeProductos() {
         let productsViewController = ProductsViewController()
         
-        productsViewController.title = "Resultados de la búsqueda"
+        productsViewController.title = "search_results".localized()
         let navController = self.navigationController
         productsViewController.textToSearch = searchText.text ?? ""
-        navigationController?.pushViewController(productsViewController, animated: true)
+        navController?.pushViewController(productsViewController, animated: true)
     }
     
 }

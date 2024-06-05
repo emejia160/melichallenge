@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  MeliChallenge
+
+  Created by Edison Mejia Estrada on 5/06/24.
+  
+*/
+"error_empty_search" = "You must enter a product to search!";
+"search_results" = "Search results";
+"error_searching_products" = "An error has ocurrer while search products";
+

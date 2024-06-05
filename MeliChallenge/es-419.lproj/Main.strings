@@ -1,0 +1,9 @@
+
+/* Class = "UITextField"; placeholder = "Buscar en Mercado Libre"; ObjectID = "b7x-Eq-Vo4"; */
+"b7x-Eq-Vo4.placeholder" = "Buscar en Mercado Libre";
+
+/* Class = "UIButton"; configuration.title = "Buscar"; ObjectID = "l4L-WC-Kfe"; */
+"l4L-WC-Kfe.configuration.title" = "Buscar";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "l4L-WC-Kfe"; */
+"l4L-WC-Kfe.normalTitle" = "Button";
